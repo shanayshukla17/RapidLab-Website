@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/style/home_style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@600&family=Abril+Fatface&family=Kanit:wght@500&family=Lato&family=Montserrat:wght@400;500&family=Noto+Sans:wght@600&family=Roboto:wght@300;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@600&family=Abril+Fatface&family=Lato&family=Montserrat:wght@400;500&family=Noto+Sans:wght@600&family=Roboto:wght@300;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Mulish:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="content-background"><img src="images/home_background3.png" alt="" class="content-background-image"></div>
+    <div class="nav">
+        <div class="nav-sub">
+            <a href="">About</a>
+        </div>
+        <div class="nav-sub">
+            <a href="">Blog</a>
+        </div>
+        <div class="nav-sub">
+            <a href="">Gallery</a>
+        </div>
+        <div class="nav-sub">
+            <a href="">Contact Us</a>
+        </div>
+      
+        
+    </div>
+    <div class="content" id="content">
+        <div id="content-company-heading"><span id="content-company-heading-text">h<span id="yellow">i</span> <br>r<span id="yellow">a</span>p<span id="yellow">i</span>d <br>l<span id="yellow">a</span>b</span></div>
+        <div class="content-text" id="content-text">
+            <div class="content-text-title"><h2>Comprehensive</h2></div>
+            <div class="content-text-description">
+                <span id="content-text-descroption-i1">The vision of COMPREHENSIV is to provide @ home universal primary health care to every person in India, thru a trained and empowered local Community Health Care Personnel (CHCP)</span>
+                </div>
+        </div>
+    </div>
+    <div class="backend">
+    <% for (let campground of campgrounds) {%>
+    <div class="card">
+        <div class="card-img"><img src="<%= campground.image %>" alt="Image is here" class="card-img-specific"></div>
+        <div class="card-info">
+            <div class="card-info-title"><h1><%= campground.title %></h1></div>
+            <div class="card-info-description"><%= campground.description %></div>
+        </div>
+    </div>
+<% }%>
+    </div>
+
+<script>
+    window.addEventListener('scroll',function(){
+        let value=window.scrollY;
+        document.getElementById("content-text").style.marginTop=value*1.5+'px';
+    })
+</script>
+
+</body>
+</html>
+
+

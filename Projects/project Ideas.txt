@@ -1,0 +1,17 @@
+Projects
+1) Portfolio
+- Make using good animation 
+- Mix of Css and react
+- Use backend to store the email address of the user
+- Also create a blog post and use backend 
+- Use the chatbot API 
+
+
+2) Shopping website
+- Use CSS 
+- Make use of backend to store the user info, The dress that they have slected 
+
+3) Location Tracker for Women Safety 
+- Tracks location
+- Has a Help button which on pressing sends an mail to police about their location
+- Review Section (BLogpost type where further inputs can be taken) 
