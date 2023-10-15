@@ -1,0 +1,87 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="/style/style_for_gallery.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+    </head>
+    <body>
+        <div class="main_div">
+            <div id="sub_div1">Welcome to -<span class="auto-type"></span> </div>
+            <div class="map_container">
+                <div id="map"></div>
+            </div>
+            <div id="heading">Pictures</div>
+            <div id="sub_div2">
+                <% for (let gallery of galleries) {%>
+                <div class="image_container_div"><img src="<%= gallery.image %>" alt="This is image" class="gallery_images">
+                </div>
+                <% } %>
+            </div>
+        </div>
+        <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+
+        <script>
+            var typed=new Typed(".auto-type",{
+                strings:[" Hi Rapid Lab","Gallery"],
+                typeSpeed:150,
+                backSpeed:150,
+                loop:true
+            })
+        </script>
+        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+     crossorigin=""></script>
+     <script>
+	const map = L.map('map').setView([25.204941,78.540110], 4.5);
+
+	const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+		maxZoom: 19,
+		attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+	}).addTo(map);
+    let myVar = '<%- JSON.stringify(galleries) %>';
+    // Check if myVar is an array or convert it to an array if it's not
+if (!Array.isArray(myVar)) {
+// Convert myVar to an array, assuming it's a valid JSON string
+try {
+  myVar = JSON.parse(myVar);
+} catch (error) {
+  console.error("Error parsing myVar:", error);
+  // Handle the error or exit gracefully
+}
+}
+
+// Now, you can safely use map
+const coordinates = myVar.map(item => [item.lattitude, item.longitude]);
+const imageUrls = myVar.map(item => item.image);
+const l=coordinates.length;
+
+        for (let i=0;i<l;i++){ 
+            // popups
+            var pop=L.popup({
+                closeOnClick:true
+            }).setContent('<h4><img src='+ imageUrls[i] + ' style="height:100px">');
+
+
+
+            //markers
+            var marker=L.marker(coordinates[i]).addTo(map).bindPopup(pop);
+            var tooltip=L.tooltip({
+                permanent:true
+            })
+            marker.bindTooltip(tooltip)
+    }
+
+
+     </script>
+
+    </body>
+</html>

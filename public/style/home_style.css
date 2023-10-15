@@ -10,7 +10,7 @@ a{
 @keyframes fade-up {
     0%{
         opacity: 0;
-        transform: translateY(-50px) scale(0.9);
+        transform: translateY(-10px) scale(0.99);
     }
     100%{
         opacity: 1;
@@ -76,7 +76,7 @@ a{
         gap: 50px;
         justify-content:space-between;
         align-items: center;
-        animation: fade-up 2s;
+        animation: fade-up 0.2s;
         
     }
 
@@ -116,7 +116,7 @@ a{
         justify-content: center;
         align-items: center;
         background-color: white;
-        border: 2px solid black;
+        //border: 2px solid black;
         margin-right: 10px;
         border-radius: 10px;
         z-index: -1;
@@ -165,7 +165,7 @@ a{
         width: 100%;
         justify-content: center;
         align-items: center;
-        gap: 3rem;
+        gap: 10rem;
         margin-bottom: 10px;
     }
     
@@ -181,6 +181,7 @@ a{
     
     
     .card-img-specific{
+        border: 2px solid black;
         border-radius: 10px;;
         height: 50%;
         width: 100%;
@@ -189,29 +190,33 @@ a{
     
     .card-info{
         height: 600px;
-        width: 600px;
+        width: 700px;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        
+        gap: 1.3rem;
     }
     
     .card-info-title{
+        width: 100%;
+        background-color: rgb(255, 168, 37);
         margin-top: 2.5rem;
         font-size: 1.4rem;
-        height: 150px;
+        height: 120px;
         display: flex;
         justify-content: center;
+        border-radius: 30px;
     }
     
     .card-info-description{
         text-align: center;
         text-wrap: wrap;
-        font-size: 1.2rem;
+        font-size: 1.3rem;
         height:300px ;
         display: flex;
-        justify-content: center;
+        align-items: baseline;
+        text-align:justify;
     
     }
 }
@@ -354,12 +359,12 @@ a{
     }
 
     .card-img{
-        border: 1px solid yellow;
         display: flex;
         justify-content: center;
     }
 
     .card-img-specific{
+        border: 2px solid black;
         border-radius: 20px;;
         height: 300px;
         width: 300px;
@@ -371,9 +376,11 @@ a{
         display: flex;
         flex-direction: column;
         justify-content: center;
+        gap: 1rem;
     }
 
     .card-info-title{
+        background-color: rgb(255, 168, 37);
         display: flex;
         justify-content: center;
     }

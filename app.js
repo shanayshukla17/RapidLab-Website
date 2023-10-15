@@ -3,6 +3,7 @@ const path=require('path')
 const app=express();
 const mongoose=require('mongoose');
 const Campground=require('./model/campground')
+const Gallery=require('./model/gallery')
 const methodOverride=require('method-override')
 const ejsMate=require('ejs-mate')
 
@@ -50,4 +51,46 @@ app.post('/home',async (req,res)=>{
     const campground=new Campground(req.body.campground)
     await campground.save()
     res.redirect('/home');
+})
+
+
+
+app.get('/home/gallery',async(req,res)=>{
+   // await Gallery.deleteMany({});
+    const galleries=await Gallery.find({})
+    res.render('image',{galleries});
+})
+
+
+
+app.get('/home/gallery/add',async(req,res)=>{
+    //await Gallery.deleteMany();
+    res.render('add_photo');
+})
+
+
+app.post('/home/gallery',async(req,res)=>{
+    const gallery_recieve=new Gallery(req.body.gallery);
+    await gallery_recieve.save();
+    res.redirect('/home/gallery')
+})
+
+
+
+app.get('/home/gallery/delete',async(req,res)=>{
+    res.render('delete_photo');
+})
+
+
+app.delete('/home/gallery',async(req,res)=>{
+    console.log(req.body.image)
+    await Gallery.deleteOne({image:req.body.image});
+    res.redirect('/home/gallery');
+
+})
+
+
+
+app.get('/home/contact',async(req,res)=>{
+    res.render('contact_us');
 })
